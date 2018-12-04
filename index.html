@@ -1,0 +1,76 @@
+<html>
+	<title>Teste de Pagina Dinamica</title>
+	<body>
+		<div id="container">
+		    <div id="forca">
+		    	<div id="letras">
+		    		
+		    	</div>
+		    </div>
+		    <div id="informations">
+		    	<h1>VAI DEIXAR O BOY MORRER?</h1>
+		    	Qual a palavra do desafio?  <br>
+		    	<input id="palavra" type="password"></input>
+				<button id="desafio" onclick="desafiar(palavra, desafio, aposta, letras, informations, tentativas)">Desafiar</button><br>
+				
+		    	Opine em uma letra: <br>
+		    	<input id="letra"></input>
+				<button id="aposta" onclick="apostarLetra(letra, letras)" disabled="true">Apostar</button><br>
+				
+				<p id="aviso">(Só será considerada a primeira letra até a última chance)</p>
+
+				<p id="tentativas"></p>
+
+				<button id="desistir" onclick="desistirDoJogo(desistir, aposta, desafio, letras)" disabled="true">Desistir</button><br>
+		    </div>
+		</div>
+		<style type="text/css">
+			#tentativas{
+				position:relative;
+				align-items: center;
+				font-size: 30px;
+			}
+			#aviso{
+				position:relative;
+				align-items: center;
+				font-size: 12px;
+				top:-10px;
+			}
+			#desistir{
+				position:relative;
+				align-items: center;
+			}
+			#container{position:relative;}
+			#letras{
+				text-align: center;
+				border-style:solid;
+			    background-color: white;
+			    float: right;
+			    width: 77%;
+			    height: 295px;
+			}
+			#informations {
+				text-align: center;
+				border-style:solid;
+			    background-color: white;
+			    width: 30%;
+			    height: 300px;
+			}
+			#forca {
+				border-style:solid;
+				background-image: url("imgs/outra-forca.png");
+				background-repeat: no-repeat;
+			    /*background-color: #efc94d;*/
+			    width: 68%;
+			    height: 300px;
+			    
+			    /* código para mostrar apenas 50% da div Cinzenta (coberturas1) */
+			    position:absolute;
+			    top:0px; /* muda este valor para "0" - Isto foi apenas mostrar o que está a acontecer por detrás da div */
+			    right:0%; /* 25% significa metade ( que neste caso será 50%) do tamanho de ambas as divs */
+			}
+		</style>
+		<script src="target/scala-2.12/forca-fastopt.js"></script>
+
+	</body>
+</html>
