@@ -1457,48 +1457,80 @@ $c_LIndex$.prototype.init___ = (function() {
   this.letras$undtentadas$1 = $m_sci_Nil$();
   return this
 });
+$c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativas, desistiu) {
+  this.letras$undtentadas$1 = $m_sci_Nil$();
+  this.acertos$1 = "";
+  this.palavra$unddesafio$1 = "";
+  this.tentativas$1 = 0;
+  var palavra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("palavra");
+  var desistir = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("desistir");
+  var desafio = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("desafio");
+  var aposta = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("aposta");
+  var p_tentativas = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("tentativas");
+  var letras = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letras");
+  var letra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra");
+  letra.disabled = true;
+  palavra.disabled = false;
+  desistir.disabled = true;
+  desafio.disabled = false;
+  aposta.disabled = true;
+  p_tentativas.innerHTML = "";
+  letras.innerHTML = "";
+  if (desistiu) {
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Frouxo!")
+  } else if (vitoria) {
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Fim do jogo! Voc\u00ea venceu!")
+  } else if (limiteDeTentativas) {
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("J\u00e1 era, boy! PERDEU, ot\u00e1rio!")
+  }
+});
+$c_LIndex$.prototype.isFimDeJogo__Z = (function() {
+  return (this.acertos$1 === this.palavra$unddesafio$1)
+});
 $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(letra, letras, p_tentativas) {
   if ((this.tentativas$1 < this.chances$1)) {
-    var thiz = $as_T(letra.value);
-    var c = (65535 & $uI(thiz.charCodeAt(0)));
-    var x = $as_T($g.String.fromCharCode(c));
-    var this$9 = new $c_sci_StringOps().init___T(x);
-    var bf = $m_s_Predef$().StringCanBuildFrom$2;
-    var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$9, bf);
-    var i = 0;
-    var $$this = this$9.repr$1;
-    var len = $uI($$this.length);
-    while ((i < len)) {
-      var arg1 = this$9.apply__I__O(i);
-      if ((arg1 === null)) {
-        var x$2 = 0
-      } else {
-        var this$13 = $as_jl_Character(arg1);
-        var x$2 = this$13.value$1
-      };
-      var c$1 = $m_jl_Character$().toUpperCase__C__C(x$2);
-      b.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$1));
-      i = ((1 + i) | 0)
-    };
-    var _letra = $as_T(b.result__O());
-    var this$18 = this.letras$undtentadas$1;
-    if ($f_sc_LinearSeqOptimized__contains__O__Z(this$18, _letra)) {
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Letra j\u00e1 foi tentada!")
-    } else {
-      var this$19 = this.letras$undtentadas$1;
-      this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$19);
-      this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
-    }
-  } else if ((this.tentativas$1 === this.chances$1)) {
     if (($as_T(letra.value) === this.palavra$unddesafio$1)) {
-      letras.innerHTML = "";
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Fim do jogo! Voc\u00ea venceu!")
+      this.fimDeJogo__Z__Z__Z__V(true, false, false)
     } else {
-      letras.innerHTML = "";
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Se fudeu!")
+      var thiz = $as_T(letra.value);
+      var c = (65535 & $uI(thiz.charCodeAt(0)));
+      var x = $as_T($g.String.fromCharCode(c));
+      var this$9 = new $c_sci_StringOps().init___T(x);
+      var bf = $m_s_Predef$().StringCanBuildFrom$2;
+      var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$9, bf);
+      var i = 0;
+      var $$this = this$9.repr$1;
+      var len = $uI($$this.length);
+      while ((i < len)) {
+        var arg1 = this$9.apply__I__O(i);
+        if ((arg1 === null)) {
+          var x$2 = 0
+        } else {
+          var this$13 = $as_jl_Character(arg1);
+          var x$2 = this$13.value$1
+        };
+        var c$1 = $m_jl_Character$().toUpperCase__C__C(x$2);
+        b.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$1));
+        i = ((1 + i) | 0)
+      };
+      var _letra = $as_T(b.result__O());
+      var this$18 = this.letras$undtentadas$1;
+      if ($f_sc_LinearSeqOptimized__contains__O__Z(this$18, _letra)) {
+        $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Letra j\u00e1 foi tentada!")
+      } else {
+        var this$19 = this.letras$undtentadas$1;
+        this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$19);
+        this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
+      }
+    }
+  } else if (this.isFimDeJogo__Z()) {
+    if (($as_T(letra.value) === this.palavra$unddesafio$1)) {
+      this.fimDeJogo__Z__Z__Z__V(true, false, false)
+    } else {
+      this.fimDeJogo__Z__Z__Z__V(false, true, false)
     }
   } else {
-    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("J\u00e1 era, boy!")
+    this.fimDeJogo__Z__Z__Z__V(false, true, false)
   }
 });
 $c_LIndex$.prototype.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V = (function(p_tentativas) {
@@ -1508,21 +1540,19 @@ $c_LIndex$.prototype.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V = (f
 $c_LIndex$.prototype.desafiar__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(palavra, desafio, aposta, letras, information, p_tentativas) {
   var thiz = $as_T(palavra.value);
   this.palavra$unddesafio$1 = $as_T(thiz.toUpperCase());
+  palavra.disabled = true;
   desafio.disabled = true;
   aposta.disabled = false;
   var desistir = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("desistir");
   desistir.disabled = false;
+  var letra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra");
+  letra.disabled = false;
   p_tentativas.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(("Tentativas: " + this.tentativas$1)));
   information.appendChild(p_tentativas);
   this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
 });
 $c_LIndex$.prototype.desistirDoJogo__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(desistir, aposta, desafiar, letras) {
-  desistir.disabled = true;
-  desafiar.disabled = false;
-  aposta.disabled = true;
-  var p_tentativas = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("tentativas");
-  p_tentativas.innerHTML = "";
-  letras.innerHTML = ""
+  this.fimDeJogo__Z__Z__Z__V(false, false, true)
 });
 $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(div_letras, p_tentativas) {
   var elem$1 = null;
@@ -1606,7 +1636,11 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   var title = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("h1");
   title.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(this.acertos$1));
   div_letras.appendChild(title);
-  div_letras.style.textAlign = "center"
+  div_letras.style.top = "50%";
+  div_letras.style.textAlign = "center";
+  if (this.isFimDeJogo__Z()) {
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra desafiada pra vencer o jogo!")
+  }
 });
 $c_LIndex$.prototype.main__AT__V = (function(args) {
   /*<skip>*/

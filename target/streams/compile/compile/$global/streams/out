@@ -1,7 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/joaopaulo/Documentos/forca/src/main/scala/example/Index.scala:34:58: empty character literal[0m
-[0m[[0m[31merror[0m] [0m[0m		if(new_acertos.isEmpty || new_acertos.str_replace('_', '').isEmpty) {[0m
-[0m[[0m[31merror[0m] [0m[0m		                                                       ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/joaopaulo/Documentos/forca/src/main/scala/example/Index.scala:45:2: ')' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m	}[0m
-[0m[[0m[31merror[0m] [0m[0m	^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/joaopaulo/Documentos/forca/src/main/scala/example/Index.scala:130:46: too many arguments (5) for method fimDeJogo: (vitoria: Boolean, limiteDeTentativas: Boolean, desistiu: Boolean)Unit[0m
+[0m[[0m[31merror[0m] [0m[0m			this.fimDeJogo(false, true, p_tentativas, desafio, aposta)[0m
+[0m[[0m[31merror[0m] [0m[0m			                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
