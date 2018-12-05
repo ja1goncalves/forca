@@ -22,16 +22,17 @@ object Index {
 		}else{
 			if(palavra_desafio.contains(letras_tentadas.head)){
 				for(i <- 0 to palavra_desafio.length-1){
-					if(palavra_desafio.charAt(i).toString == letras_tentadas.head){
+					if(letras_tentadas.contains(palavra_desafio.charAt(i).toString)){
 						new_acertos = new_acertos + " " + (palavra_desafio.charAt(i).toString).map(_.toUpper)
 					}else
 						new_acertos += " _"
 				}
-			}
+			}else{
+				new_acertos = acertos
+				letras_tentadas = letras_tentadas.tail
+			} 
 		}
-		println(new_acertos)
-		println(acertos)
-		if(new_acertos.isEmpty) {
+		if(new_acertos == acertos) {
 			tentativas = tentativas + 1
 			this.alterarTentativas(p_tentativas)
 		}
