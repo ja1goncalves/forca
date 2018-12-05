@@ -1517,6 +1517,8 @@ $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
 });
 $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(letra, letras, p_tentativas) {
   if ((this.tentativas$1 < this.chances$1)) {
+    var jsx$1 = true
+  } else if ((this.tentativas$1 === this.chances$1)) {
     var x = $as_T(letra.value);
     var this$2 = new $c_sci_StringOps().init___T(x);
     var bf = $m_s_Predef$().StringCanBuildFrom$2;
@@ -1538,37 +1540,63 @@ $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_s
     };
     var x$1 = b.result__O();
     var x$2 = this.palavra$unddesafio$1;
-    if (((x$1 === null) ? (x$2 === null) : $objectEquals(x$1, x$2))) {
+    var jsx$1 = ((x$1 === null) ? (x$2 === null) : $objectEquals(x$1, x$2))
+  } else {
+    var jsx$1 = false
+  };
+  if (jsx$1) {
+    var x$4 = $as_T(letra.value);
+    var this$12 = new $c_sci_StringOps().init___T(x$4);
+    var bf$1 = $m_s_Predef$().StringCanBuildFrom$2;
+    var b$1 = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$12, bf$1);
+    var i$1 = 0;
+    var $$this$1 = this$12.repr$1;
+    var len$1 = $uI($$this$1.length);
+    while ((i$1 < len$1)) {
+      var arg1$1 = this$12.apply__I__O(i$1);
+      if ((arg1$1 === null)) {
+        var x$4$1 = 0
+      } else {
+        var this$16 = $as_jl_Character(arg1$1);
+        var x$4$1 = this$16.value$1
+      };
+      var c$1 = $m_jl_Character$().toUpperCase__C__C(x$4$1);
+      b$1.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$1));
+      i$1 = ((1 + i$1) | 0)
+    };
+    var x$5 = b$1.result__O();
+    var x$6 = this.palavra$unddesafio$1;
+    if (((x$5 === null) ? (x$6 === null) : $objectEquals(x$5, x$6))) {
       this.fimDeJogo__Z__Z__Z__V(true, false, false)
     } else {
       var thiz = $as_T(letra.value);
-      var c$1 = (65535 & $uI(thiz.charCodeAt(0)));
-      var x$4 = $as_T($g.String.fromCharCode(c$1));
-      var this$19 = new $c_sci_StringOps().init___T(x$4);
-      var bf$1 = $m_s_Predef$().StringCanBuildFrom$2;
-      var b$1 = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$19, bf$1);
-      var i$1 = 0;
-      var $$this$1 = this$19.repr$1;
-      var len$1 = $uI($$this$1.length);
-      while ((i$1 < len$1)) {
-        var arg1$1 = this$19.apply__I__O(i$1);
-        if ((arg1$1 === null)) {
-          var x$4$1 = 0
+      var c$2 = (65535 & $uI(thiz.charCodeAt(0)));
+      var x$7 = $as_T($g.String.fromCharCode(c$2));
+      var this$29 = new $c_sci_StringOps().init___T(x$7);
+      var bf$2 = $m_s_Predef$().StringCanBuildFrom$2;
+      var b$2 = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$29, bf$2);
+      var i$2 = 0;
+      var $$this$2 = this$29.repr$1;
+      var len$2 = $uI($$this$2.length);
+      while ((i$2 < len$2)) {
+        var arg1$2 = this$29.apply__I__O(i$2);
+        if ((arg1$2 === null)) {
+          var x$5$2 = 0
         } else {
-          var this$23 = $as_jl_Character(arg1$1);
-          var x$4$1 = this$23.value$1
+          var this$33 = $as_jl_Character(arg1$2);
+          var x$5$2 = this$33.value$1
         };
-        var c$2 = $m_jl_Character$().toUpperCase__C__C(x$4$1);
-        b$1.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$2));
-        i$1 = ((1 + i$1) | 0)
+        var c$3 = $m_jl_Character$().toUpperCase__C__C(x$5$2);
+        b$2.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$3));
+        i$2 = ((1 + i$2) | 0)
       };
-      var _letra = $as_T(b$1.result__O());
-      var this$28 = this.letras$undtentadas$1;
-      if ($f_sc_LinearSeqOptimized__contains__O__Z(this$28, _letra)) {
+      var _letra = $as_T(b$2.result__O());
+      var this$38 = this.letras$undtentadas$1;
+      if ($f_sc_LinearSeqOptimized__contains__O__Z(this$38, _letra)) {
         $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Letra j\u00e1 foi tentada!")
       } else {
-        var this$29 = this.letras$undtentadas$1;
-        this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$29);
+        var this$39 = this.letras$undtentadas$1;
+        this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$39);
         this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
       }
     }
@@ -1689,6 +1717,8 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   div_letras.style.textAlign = "center";
   if (this.isFimDeJogo__Z()) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra desafiada pra vencer o jogo!")
+  } else if ((this.tentativas$1 === this.chances$1)) {
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra para vencer!")
   }
 });
 $c_LIndex$.prototype.main__AT__V = (function(args) {

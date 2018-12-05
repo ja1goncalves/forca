@@ -45,9 +45,8 @@ object Index {
 		div_letras.style.top = "50%"
 		div_letras.style.textAlign = "center"
 
-		if(this.isFimDeJogo){
-			dom.window.alert("Digite a palavra desafiada pra vencer o jogo!")
-		}
+		if(this.isFimDeJogo) dom.window.alert("Digite a palavra desafiada pra vencer o jogo!")
+		else if(tentativas == chances) dom.window.alert("Digite a palavra para vencer!")
 	}
 
 	def isFimDeJogo(): Boolean = {
@@ -110,7 +109,7 @@ object Index {
 
     @JSExportTopLevel("apostarLetra")
     def apostarLetra(letra: dom.html.Input, letras: dom.html.Div, p_tentativas: dom.html.Element) = {
-		if(this.tentativas < this.chances){
+		if(this.tentativas < this.chances  || (this.tentativas == this.chances && letra.value.map(_.toUpper) == palavra_desafio)){
 			if(letra.value.map(_.toUpper) == palavra_desafio) this.fimDeJogo(true, false, false)
 			else{
 				val _letra: String = letra.value.charAt(0).toString.map(_.toUpper)
