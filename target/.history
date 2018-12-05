@@ -11,3 +11,5 @@ run
 exit
 ~fastOptJS
 exit
+fastOptJS
+~fastOptJS

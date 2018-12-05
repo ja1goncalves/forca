@@ -11,9 +11,9 @@ object Index {
 
 	var acertos: String = ""
 	var palavra_desafio: String = ""
-	val letras_tentadas: List[String] = List()
+	var letras_tentadas: List[String] = List()
 
-	def letrasAcertadas(div_letras: dom.html.Div): Unit = {
+	def letrasAcertadas(div_letras: dom.html.Div, p_tentativas: dom.html.Element): Unit = {
 		var new_acertos = ""
 		if(letras_tentadas.isEmpty){
 			for(i <- 0 to palavra_desafio.length-1){
@@ -29,6 +29,12 @@ object Index {
 				}
 			}
 		}
+		println(new_acertos)
+		println(acertos)
+		if(new_acertos.isEmpty) {
+			tentativas = tentativas + 1
+			this.alterarTentativas(p_tentativas)
+		}
 		acertos = new_acertos
 		div_letras.innerHTML = ""
 
@@ -36,6 +42,11 @@ object Index {
 		title.appendChild(document.createTextNode(acertos))
 		div_letras.appendChild(title)
 		div_letras.style.textAlign = "center"
+	}
+
+	def alterarTentativas(p_tentativas: dom.html.Element): Unit = {
+		p_tentativas.innerHTML = ""
+		p_tentativas.appendChild(document.createTextNode("Tentativas: " + tentativas))
 	}
   
     @JSExportTopLevel("desafiar")
@@ -50,21 +61,18 @@ object Index {
 		p_tentativas.appendChild(document.createTextNode("Tentativas: " + tentativas))
 		information.appendChild(p_tentativas)
 
-		letrasAcertadas(letras)
+		letrasAcertadas(letras, p_tentativas)
     }
 
     @JSExportTopLevel("apostarLetra")
-    def apostarLetra(letra: dom.html.Input, letras: dom.html.Div) = {
+    def apostarLetra(letra: dom.html.Input, letras: dom.html.Div, p_tentativas: dom.html.Element) = {
 		if(this.tentativas < this.chances){
 			val _letra: String = letra.value.charAt(0).toString.map(_.toUpper)
 			if(letras_tentadas.contains(_letra)) dom.window.alert("Letra já foi tentada!")
 			else{
-				_letra :: letras_tentadas
-				println(letras_tentadas)
-				this.letrasAcertadas(letras)
+				letras_tentadas = _letra :: letras_tentadas
+				this.letrasAcertadas(letras, p_tentativas)
 			}
-			
-			tentativas += 1
 		}else if(this.tentativas == this.chances){
 			if(letra.value == palavra_desafio){
 				letras.innerHTML = ""
