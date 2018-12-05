@@ -51,7 +51,7 @@ object Index {
 	}
 
 	def isFimDeJogo(): Boolean = {
-		return (acertos == palavra_desafio)
+		return (acertos.toUpperCase.filterNot(_ == ' ') == palavra_desafio)
 	}
 
 	def fimDeJogo(vitoria: Boolean, limiteDeTentativas: Boolean, desistiu: Boolean): Unit = {
@@ -111,7 +111,7 @@ object Index {
     @JSExportTopLevel("apostarLetra")
     def apostarLetra(letra: dom.html.Input, letras: dom.html.Div, p_tentativas: dom.html.Element) = {
 		if(this.tentativas < this.chances){
-			if(letra.value == palavra_desafio) this.fimDeJogo(true, false, false)
+			if(letra.value.map(_.toUpper) == palavra_desafio) this.fimDeJogo(true, false, false)
 			else{
 				val _letra: String = letra.value.charAt(0).toString.map(_.toUpper)
 				if(letras_tentadas.contains(_letra)) dom.window.alert("Letra já foi tentada!")

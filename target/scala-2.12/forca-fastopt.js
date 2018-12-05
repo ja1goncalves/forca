@@ -1485,41 +1485,90 @@ $c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativ
   }
 });
 $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
-  return (this.acertos$1 === this.palavra$unddesafio$1)
+  var thiz = this.acertos$1;
+  var x = $as_T(thiz.toUpperCase());
+  var this$3 = new $c_sci_StringOps().init___T(x);
+  var b = new $c_scm_StringBuilder().init___();
+  var i = 0;
+  var $$this$1 = this$3.repr$1;
+  var len = $uI($$this$1.length);
+  while ((i < len)) {
+    var arg1 = this$3.apply__I__O(i);
+    if ((arg1 === null)) {
+      var x$2 = 0
+    } else {
+      var this$9 = $as_jl_Character(arg1);
+      var x$2 = this$9.value$1
+    };
+    if (((x$2 === 32) !== true)) {
+      if ((arg1 === null)) {
+        var jsx$1 = 0
+      } else {
+        var this$11 = $as_jl_Character(arg1);
+        var jsx$1 = this$11.value$1
+      };
+      b.$$plus$eq__C__scm_StringBuilder(jsx$1)
+    };
+    i = ((1 + i) | 0)
+  };
+  var x$1 = b.underlying$5.java$lang$StringBuilder$$content$f;
+  var x$3 = this.palavra$unddesafio$1;
+  return (x$1 === x$3)
 });
 $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(letra, letras, p_tentativas) {
   if ((this.tentativas$1 < this.chances$1)) {
-    if (($as_T(letra.value) === this.palavra$unddesafio$1)) {
+    var x = $as_T(letra.value);
+    var this$2 = new $c_sci_StringOps().init___T(x);
+    var bf = $m_s_Predef$().StringCanBuildFrom$2;
+    var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$2, bf);
+    var i = 0;
+    var $$this = this$2.repr$1;
+    var len = $uI($$this.length);
+    while ((i < len)) {
+      var arg1 = this$2.apply__I__O(i);
+      if ((arg1 === null)) {
+        var x$3 = 0
+      } else {
+        var this$6 = $as_jl_Character(arg1);
+        var x$3 = this$6.value$1
+      };
+      var c = $m_jl_Character$().toUpperCase__C__C(x$3);
+      b.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c));
+      i = ((1 + i) | 0)
+    };
+    var x$1 = b.result__O();
+    var x$2 = this.palavra$unddesafio$1;
+    if (((x$1 === null) ? (x$2 === null) : $objectEquals(x$1, x$2))) {
       this.fimDeJogo__Z__Z__Z__V(true, false, false)
     } else {
       var thiz = $as_T(letra.value);
-      var c = (65535 & $uI(thiz.charCodeAt(0)));
-      var x = $as_T($g.String.fromCharCode(c));
-      var this$9 = new $c_sci_StringOps().init___T(x);
-      var bf = $m_s_Predef$().StringCanBuildFrom$2;
-      var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$9, bf);
-      var i = 0;
-      var $$this = this$9.repr$1;
-      var len = $uI($$this.length);
-      while ((i < len)) {
-        var arg1 = this$9.apply__I__O(i);
-        if ((arg1 === null)) {
-          var x$2 = 0
+      var c$1 = (65535 & $uI(thiz.charCodeAt(0)));
+      var x$4 = $as_T($g.String.fromCharCode(c$1));
+      var this$19 = new $c_sci_StringOps().init___T(x$4);
+      var bf$1 = $m_s_Predef$().StringCanBuildFrom$2;
+      var b$1 = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$19, bf$1);
+      var i$1 = 0;
+      var $$this$1 = this$19.repr$1;
+      var len$1 = $uI($$this$1.length);
+      while ((i$1 < len$1)) {
+        var arg1$1 = this$19.apply__I__O(i$1);
+        if ((arg1$1 === null)) {
+          var x$4$1 = 0
         } else {
-          var this$13 = $as_jl_Character(arg1);
-          var x$2 = this$13.value$1
+          var this$23 = $as_jl_Character(arg1$1);
+          var x$4$1 = this$23.value$1
         };
-        var c$1 = $m_jl_Character$().toUpperCase__C__C(x$2);
-        b.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$1));
-        i = ((1 + i) | 0)
+        var c$2 = $m_jl_Character$().toUpperCase__C__C(x$4$1);
+        b$1.$$plus$eq__O__scm_Builder(new $c_jl_Character().init___C(c$2));
+        i$1 = ((1 + i$1) | 0)
       };
-      var _letra = $as_T(b.result__O());
-      var this$18 = this.letras$undtentadas$1;
-      if ($f_sc_LinearSeqOptimized__contains__O__Z(this$18, _letra)) {
+      var _letra = $as_T(b$1.result__O());
+      var this$28 = this.letras$undtentadas$1;
+      if ($f_sc_LinearSeqOptimized__contains__O__Z(this$28, _letra)) {
         $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Letra j\u00e1 foi tentada!")
       } else {
-        var this$19 = this.letras$undtentadas$1;
-        this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$19);
+        var this$29 = this.letras$undtentadas$1;
+        this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$29);
         this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
       }
     }
@@ -6381,12 +6430,6 @@ function $f_sc_GenSetLike__liftedTree1$1__psc_GenSetLike__sc_GenSet__Z($thiz, x2
     }
   }
 }
-function $f_sc_TraversableLike__to__scg_CanBuildFrom__O($thiz, cbf) {
-  var b = cbf.apply__scm_Builder();
-  $f_scm_Builder__sizeHint__sc_TraversableLike__V(b, $thiz);
-  b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable($thiz.thisCollection__sc_Traversable());
-  return b.result__O()
-}
 function $f_sc_TraversableLike__flatMap__F1__scg_CanBuildFrom__O($thiz, f, bf) {
   var b = bf.apply__O__scm_Builder($thiz.repr__O());
   $thiz.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, f$1, b$1) {
@@ -6394,6 +6437,12 @@ function $f_sc_TraversableLike__flatMap__F1__scg_CanBuildFrom__O($thiz, f, bf) {
       return $as_scm_Builder(b$1.$$plus$plus$eq__sc_TraversableOnce__scg_Growable($as_sc_GenTraversableOnce(f$1.apply__O__O(x$2)).seq__sc_TraversableOnce()))
     })
   })($thiz, f, b)));
+  return b.result__O()
+}
+function $f_sc_TraversableLike__to__scg_CanBuildFrom__O($thiz, cbf) {
+  var b = cbf.apply__scm_Builder();
+  $f_scm_Builder__sizeHint__sc_TraversableLike__V(b, $thiz);
+  b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable($thiz.thisCollection__sc_Traversable());
   return b.result__O()
 }
 function $f_sc_TraversableLike__isPartLikelySynthetic$1__psc_TraversableLike__T__I__Z($thiz, fqn$1, partStart$1) {

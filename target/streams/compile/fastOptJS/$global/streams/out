@@ -1,16 +1,16 @@
 [0m[[0m[0minfo[0m] [0m[0mFast optimizing /home/joaopaulo/Documentos/forca/target/scala-2.12/forca-fastopt.js[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 37229 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 14646 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 54002 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Compute reachability: 37188 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mLinker: Assemble LinkedClasses: 13640 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mBasic Linking: 52498 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Batch mode: false[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 16443 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 21 methods.[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 33257 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 51241 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 34191 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 8434 us[0m
-[0m[[0m[0mdebug[0m] [0m[0mRefiner: 42810 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Incremental part: 8813 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizing 23 methods.[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: Optimizer part: 26887 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mInc. optimizer: 38975 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Compute reachability: 35158 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: Assemble LinkedClasses: 2437 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mRefiner: 37804 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mEmitter: Class tree cache stats: reused: 455 -- invalidated: 1[0m
 [0m[[0m[0mdebug[0m] [0m[0mEmitter: Method tree cache stats: resued: 839 -- invalidated: 18[0m
-[0m[[0m[0mdebug[0m] [0m[0mEmitter (write output): 31051 us[0m
+[0m[[0m[0mdebug[0m] [0m[0mEmitter (write output): 25264 us[0m
 [0m[[0m[0mdebug[0m] [0m[0mGlobal IR cache stats: reused: 3 -- invalidated: 1 -- trees read: 1[0m
