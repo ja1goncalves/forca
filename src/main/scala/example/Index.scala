@@ -13,7 +13,7 @@ object Index {
 	var palavra_desafio: String = ""
 	var letras_tentadas: List[String] = List()
 
-	def letrasAcertadas(div_letras: dom.html.Div, p_tentativas: dom.html.Element): Unit = {
+	def letrasAcertadas(div_letras: dom.html.Div, p_tentativas: dom.html.Element, div_forca: dom.html.Div): Unit = {
 		var new_acertos = ""
 		if(letras_tentadas.isEmpty){
 			for(i <- 0 to palavra_desafio.length-1){
@@ -35,6 +35,7 @@ object Index {
 		if(new_acertos == acertos) {
 			tentativas = tentativas + 1
 			this.alterarTentativas(p_tentativas)
+			this.alterarImagem(div_forca)
 		}
 		acertos = new_acertos
 		div_letras.innerHTML = ""
@@ -83,6 +84,10 @@ object Index {
 		
 	}
 
+	def alterarImagem(div_forca: dom.html.Div): Unit = {
+		div_forca.style.backgroundImage = "imgs/forca"+tentativas+".png"
+	}
+
 	def alterarTentativas(p_tentativas: dom.html.Element): Unit = {
 		p_tentativas.innerHTML = ""
 		p_tentativas.appendChild(document.createTextNode("Tentativas: " + tentativas))
@@ -101,10 +106,12 @@ object Index {
 		val letra = document.getElementById("letra").asInstanceOf[dom.html.Input]
 		letra.disabled = false
 
+		val div_forca = document.getElementById("forca").asInstanceOf[dom.html.Div]
+
 		p_tentativas.appendChild(document.createTextNode("Tentativas: " + tentativas))
 		information.appendChild(p_tentativas)
 
-		letrasAcertadas(letras, p_tentativas)
+		letrasAcertadas(letras, p_tentativas, div_forca)
     }
 
     @JSExportTopLevel("apostarLetra")
@@ -115,8 +122,9 @@ object Index {
 				val _letra: String = letra.value.charAt(0).toString.map(_.toUpper)
 				if(letras_tentadas.contains(_letra)) dom.window.alert("Letra já foi tentada!")
 				else{
+					val div_forca = document.getElementById("forca").asInstanceOf[dom.html.Div]
 					letras_tentadas = _letra :: letras_tentadas
-					this.letrasAcertadas(letras, p_tentativas)
+					this.letrasAcertadas(letras, p_tentativas, div_forca)
 				}
 			}
 		}else if(this.isFimDeJogo){

@@ -1484,6 +1484,9 @@ $c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativ
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("J\u00e1 era, boy! PERDEU, ot\u00e1rio!")
   }
 });
+$c_LIndex$.prototype.alterarImagem__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(div_forca) {
+  div_forca.style.backgroundImage = (("imgs/forca" + this.tentativas$1) + ".png")
+});
 $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
   var thiz = this.acertos$1;
   var x = $as_T(thiz.toUpperCase());
@@ -1595,9 +1598,10 @@ $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_s
       if ($f_sc_LinearSeqOptimized__contains__O__Z(this$38, _letra)) {
         $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Letra j\u00e1 foi tentada!")
       } else {
+        var div_forca = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("forca");
         var this$39 = this.letras$undtentadas$1;
         this.letras$undtentadas$1 = new $c_sci_$colon$colon().init___O__sci_List(_letra, this$39);
-        this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
+        this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_HTMLDivElement__V(letras, p_tentativas, div_forca)
       }
     }
   } else if (this.isFimDeJogo__Z()) {
@@ -1610,28 +1614,7 @@ $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_s
     this.fimDeJogo__Z__Z__Z__V(false, true, false)
   }
 });
-$c_LIndex$.prototype.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V = (function(p_tentativas) {
-  p_tentativas.innerHTML = "";
-  p_tentativas.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(("Tentativas: " + this.tentativas$1)))
-});
-$c_LIndex$.prototype.desafiar__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(palavra, desafio, aposta, letras, information, p_tentativas) {
-  var thiz = $as_T(palavra.value);
-  this.palavra$unddesafio$1 = $as_T(thiz.toUpperCase());
-  palavra.disabled = true;
-  desafio.disabled = true;
-  aposta.disabled = false;
-  var desistir = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("desistir");
-  desistir.disabled = false;
-  var letra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra");
-  letra.disabled = false;
-  p_tentativas.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(("Tentativas: " + this.tentativas$1)));
-  information.appendChild(p_tentativas);
-  this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V(letras, p_tentativas)
-});
-$c_LIndex$.prototype.desistirDoJogo__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(desistir, aposta, desafiar, letras) {
-  this.fimDeJogo__Z__Z__Z__V(false, false, true)
-});
-$c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(div_letras, p_tentativas) {
+$c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(div_letras, p_tentativas, div_forca) {
   var elem$1 = null;
   elem$1 = "";
   if (this.letras$undtentadas$1.isEmpty__Z()) {
@@ -1706,7 +1689,8 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   };
   if (($as_T(elem$1) === this.acertos$1)) {
     this.tentativas$1 = ((1 + this.tentativas$1) | 0);
-    this.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V(p_tentativas)
+    this.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V(p_tentativas);
+    this.alterarImagem__Lorg_scalajs_dom_raw_HTMLDivElement__V(div_forca)
   };
   this.acertos$1 = $as_T(elem$1);
   div_letras.innerHTML = "";
@@ -1720,6 +1704,28 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   } else if ((this.tentativas$1 === this.chances$1)) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra para vencer!")
   }
+});
+$c_LIndex$.prototype.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V = (function(p_tentativas) {
+  p_tentativas.innerHTML = "";
+  p_tentativas.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(("Tentativas: " + this.tentativas$1)))
+});
+$c_LIndex$.prototype.desafiar__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(palavra, desafio, aposta, letras, information, p_tentativas) {
+  var thiz = $as_T(palavra.value);
+  this.palavra$unddesafio$1 = $as_T(thiz.toUpperCase());
+  palavra.disabled = true;
+  desafio.disabled = true;
+  aposta.disabled = false;
+  var desistir = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("desistir");
+  desistir.disabled = false;
+  var letra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra");
+  letra.disabled = false;
+  var div_forca = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("forca");
+  p_tentativas.appendChild($m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(("Tentativas: " + this.tentativas$1)));
+  information.appendChild(p_tentativas);
+  this.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__Lorg_scalajs_dom_raw_HTMLDivElement__V(letras, p_tentativas, div_forca)
+});
+$c_LIndex$.prototype.desistirDoJogo__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLButtonElement__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(desistir, aposta, desafiar, letras) {
+  this.fimDeJogo__Z__Z__Z__V(false, false, true)
 });
 $c_LIndex$.prototype.main__AT__V = (function(args) {
   /*<skip>*/
