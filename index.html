@@ -1,14 +1,14 @@
 <html>
-	<title>Teste de Pagina Dinamica</title>
+	<title>Salve o Presidente</title>
 	<body>
 		<div id="container">
-		    <div id="forca">
+		    <div id="forca" style="background-image: url('imgs/forca0.png')">
 		    	<div id="letras">
 		    		
 		    	</div>
 		    </div>
 		    <div id="informations">
-		    	<h1>VAI DEIXAR O BOY MORRER?</h1>
+		    	<h1>Jogasso da Forca</h1>
 		    	Qual a palavra do desafio?  <br>
 		    	<input id="palavra" type="password" value=""></input>
 				<button id="desafio" onclick="desafiar(palavra, desafio, aposta, letras, informations, tentativas)">Desafiar</button><br>
@@ -46,7 +46,7 @@
 				border-style:solid;
 			    background-color: white;
 			    float: right;
-			    width: 77%;
+			    width: 74%;
 			    height: 295px;
 			}
 			#informations {
@@ -58,16 +58,14 @@
 			}
 			#forca {
 				border-style:solid;
-				background-image: url("imgs/forca0.png");
+				/*background-image: url("imgs/forca0.png");*/
 				background-repeat: no-repeat;
 			    /*background-color: #efc94d;*/
 			    width: 68%;
 			    height: 300px;
-			    
-			    /* código para mostrar apenas 50% da div Cinzenta (coberturas1) */
 			    position:absolute;
-			    top:0px; /* muda este valor para "0" - Isto foi apenas mostrar o que está a acontecer por detrás da div */
-			    right:0%; /* 25% significa metade ( que neste caso será 50%) do tamanho de ambas as divs */
+			    top:0px; 
+			    right:0%;
 			}
 		</style>
 		<script src="target/scala-2.12/forca-fastopt.js"></script>

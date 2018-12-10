@@ -1437,6 +1437,7 @@ function $c_LIndex$() {
   $c_O.call(this);
   this.chances$1 = 0;
   this.tentativas$1 = 0;
+  this.backgrounds$1 = null;
   this.acertos$1 = null;
   this.palavra$unddesafio$1 = null;
   this.letras$undtentadas$1 = null
@@ -1450,8 +1451,21 @@ function $h_LIndex$() {
 $h_LIndex$.prototype = $c_LIndex$.prototype;
 $c_LIndex$.prototype.init___ = (function() {
   $n_LIndex$ = this;
-  this.chances$1 = 7;
+  this.chances$1 = 6;
   this.tentativas$1 = 0;
+  var array = ["url('imgs/forca0.png')", "url('imgs/forca1.png')", "url('imgs/forca2.png')", "url('imgs/forca3.png')", "url('imgs/forca4.png')", "url('imgs/forca5.png')", "url('imgs/forca6.png')"];
+  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array(array);
+  var len = $uI(xs.array$6.length);
+  var array$1 = $newArrayObject($d_T.getArrayOf(), [len]);
+  var elem$1 = 0;
+  elem$1 = 0;
+  var this$6 = new $c_sc_IndexedSeqLike$Elements().init___sc_IndexedSeqLike__I__I(xs, 0, $uI(xs.array$6.length));
+  while (this$6.hasNext__Z()) {
+    var arg1 = this$6.next__O();
+    array$1.set(elem$1, arg1);
+    elem$1 = ((1 + elem$1) | 0)
+  };
+  this.backgrounds$1 = array$1;
   this.acertos$1 = "";
   this.palavra$unddesafio$1 = "";
   this.letras$undtentadas$1 = $m_sci_Nil$();
@@ -1469,6 +1483,7 @@ $c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativ
   var p_tentativas = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("tentativas");
   var letras = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letras");
   var letra = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra");
+  var div_forca = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("forca");
   letra.disabled = true;
   palavra.disabled = false;
   desistir.disabled = true;
@@ -1476,16 +1491,14 @@ $c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativ
   aposta.disabled = true;
   p_tentativas.innerHTML = "";
   letras.innerHTML = "";
+  div_forca.style.backgroundImage = this.backgrounds$1.get(this.tentativas$1);
   if (desistiu) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Frouxo!")
   } else if (vitoria) {
-    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Fim do jogo! Voc\u00ea venceu!")
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Fim do jogo! fazer o que, n\u00e9? Voc\u00ea venceu!")
   } else if (limiteDeTentativas) {
-    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("J\u00e1 era, boy! PERDEU, ot\u00e1rio!")
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Voc\u00ea falhou com a na\u00e7\u00e3o!")
   }
-});
-$c_LIndex$.prototype.alterarImagem__Lorg_scalajs_dom_raw_HTMLDivElement__V = (function(div_forca) {
-  div_forca.style.backgroundImage = (("imgs/forca" + this.tentativas$1) + ".png")
 });
 $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
   var thiz = this.acertos$1;
@@ -1516,7 +1529,11 @@ $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
   };
   var x$1 = b.underlying$5.java$lang$StringBuilder$$content$f;
   var x$3 = this.palavra$unddesafio$1;
-  return (x$1 === x$3)
+  if ((x$1 === x$3)) {
+    return true
+  } else {
+    return (this.tentativas$1 === this.chances$1)
+  }
 });
 $c_LIndex$.prototype.apostarLetra__Lorg_scalajs_dom_raw_HTMLInputElement__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_scalajs_dom_raw_HTMLElement__V = (function(letra, letras, p_tentativas) {
   if ((this.tentativas$1 < this.chances$1)) {
@@ -1690,7 +1707,7 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   if (($as_T(elem$1) === this.acertos$1)) {
     this.tentativas$1 = ((1 + this.tentativas$1) | 0);
     this.alterarTentativas__Lorg_scalajs_dom_raw_HTMLElement__V(p_tentativas);
-    this.alterarImagem__Lorg_scalajs_dom_raw_HTMLDivElement__V(div_forca)
+    div_forca.style.backgroundImage = this.backgrounds$1.get(this.tentativas$1)
   };
   this.acertos$1 = $as_T(elem$1);
   div_letras.innerHTML = "";

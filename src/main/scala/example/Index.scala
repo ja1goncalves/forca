@@ -6,8 +6,17 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 
 object Index {
 
-	val chances: Int = 7
+	val chances: Int = 6
 	var tentativas: Int = 0
+	val backgrounds: Array[String] = Array(
+		"url('imgs/forca0.png')",
+		"url('imgs/forca1.png')",
+		"url('imgs/forca2.png')",
+		"url('imgs/forca3.png')",
+		"url('imgs/forca4.png')",
+		"url('imgs/forca5.png')",
+		"url('imgs/forca6.png')"
+	)
 
 	var acertos: String = ""
 	var palavra_desafio: String = ""
@@ -35,7 +44,7 @@ object Index {
 		if(new_acertos == acertos) {
 			tentativas = tentativas + 1
 			this.alterarTentativas(p_tentativas)
-			this.alterarImagem(div_forca)
+			div_forca.style.backgroundImage = this.backgrounds(tentativas)
 		}
 		acertos = new_acertos
 		div_letras.innerHTML = ""
@@ -51,7 +60,7 @@ object Index {
 	}
 
 	def isFimDeJogo(): Boolean = {
-		return (acertos.toUpperCase.filterNot(_ == ' ') == palavra_desafio)
+		return ((acertos.toUpperCase.filterNot(_ == ' ') == palavra_desafio) || tentativas == chances)
 	}
 
 	def fimDeJogo(vitoria: Boolean, limiteDeTentativas: Boolean, desistiu: Boolean): Unit = {
@@ -67,6 +76,7 @@ object Index {
 		val p_tentativas = document.getElementById("tentativas").asInstanceOf[dom.html.Element]
 		val letras = document.getElementById("letras").asInstanceOf[dom.html.Div]
 		val letra = document.getElementById("letra").asInstanceOf[dom.html.Input]
+		val div_forca = document.getElementById("forca").asInstanceOf[dom.html.Div]
 
 		letra.disabled = true
 		palavra.disabled = false
@@ -75,17 +85,14 @@ object Index {
 		aposta.disabled = true
 		p_tentativas.innerHTML = ""
     	letras.innerHTML = ""
+		div_forca.style.backgroundImage = this.backgrounds(tentativas)
 
 		if(desistiu) dom.window.alert("Frouxo!")
 		else{
-			if(vitoria) dom.window.alert("Fim do jogo! Você venceu!")
-			else if(limiteDeTentativas) dom.window.alert("Já era, boy! PERDEU, otário!")
+			if(vitoria) dom.window.alert("Fim do jogo! fazer o que, né? Você venceu!")
+			else if(limiteDeTentativas) dom.window.alert("Você falhou com a nação!")
 		}
 		
-	}
-
-	def alterarImagem(div_forca: dom.html.Div): Unit = {
-		div_forca.style.backgroundImage = "imgs/forca"+tentativas+".png"
 	}
 
 	def alterarTentativas(p_tentativas: dom.html.Element): Unit = {
