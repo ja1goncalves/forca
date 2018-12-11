@@ -1497,7 +1497,7 @@ $c_LIndex$.prototype.fimDeJogo__Z__Z__Z__V = (function(vitoria, limiteDeTentativ
   } else if (vitoria) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Fim do jogo! fazer o que, n\u00e9? Voc\u00ea venceu!")
   } else if (limiteDeTentativas) {
-    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Voc\u00ea falhou com a na\u00e7\u00e3o!")
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Voc\u00ea falhou com a na\u00e7\u00e3o, TA, OK?!")
   }
 });
 $c_LIndex$.prototype.isFimDeJogo__Z = (function() {
@@ -1699,9 +1699,7 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
         }
       }
     } else {
-      elem$1 = this.acertos$1;
-      var this$40 = this.letras$undtentadas$1;
-      this.letras$undtentadas$1 = this$40.tail__sci_List()
+      elem$1 = this.acertos$1
     }
   };
   if (($as_T(elem$1) === this.acertos$1)) {
@@ -1717,7 +1715,8 @@ $c_LIndex$.prototype.letrasAcertadas__Lorg_scalajs_dom_raw_HTMLDivElement__Lorg_
   div_letras.style.top = "50%";
   div_letras.style.textAlign = "center";
   if (this.isFimDeJogo__Z()) {
-    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra desafiada pra vencer o jogo!")
+    $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra desafiada pra vencer o jogo!");
+    $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("letra").maxLength = 15
   } else if ((this.tentativas$1 === this.chances$1)) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().alert("Digite a palavra para vencer!")
   }

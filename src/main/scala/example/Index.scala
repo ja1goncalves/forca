@@ -38,7 +38,7 @@ object Index {
 				}
 			}else{
 				new_acertos = acertos
-				letras_tentadas = letras_tentadas.tail
+				//letras_tentadas = letras_tentadas.tail
 			} 
 		}
 		if(new_acertos == acertos) {
@@ -55,8 +55,10 @@ object Index {
 		div_letras.style.top = "50%"
 		div_letras.style.textAlign = "center"
 
-		if(this.isFimDeJogo) dom.window.alert("Digite a palavra desafiada pra vencer o jogo!")
-		else if(tentativas == chances) dom.window.alert("Digite a palavra para vencer!")
+		if(this.isFimDeJogo){
+			dom.window.alert("Digite a palavra desafiada pra vencer o jogo!")
+			document.getElementById("letra").asInstanceOf[dom.html.Input].maxLength = 15
+		}else if(tentativas == chances) dom.window.alert("Digite a palavra para vencer!")
 	}
 
 	def isFimDeJogo(): Boolean = {
@@ -89,8 +91,9 @@ object Index {
 
 		if(desistiu) dom.window.alert("Frouxo!")
 		else{
-			if(vitoria) dom.window.alert("Fim do jogo! fazer o que, né? Você venceu!")
-			else if(limiteDeTentativas) dom.window.alert("Você falhou com a nação!")
+			if(vitoria){ 
+				dom.window.alert("Fim do jogo! fazer o que, né? Você venceu!")
+			}else if(limiteDeTentativas) dom.window.alert("Você falhou com a nação, TA, OK?!")
 		}
 		
 	}
